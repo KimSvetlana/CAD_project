@@ -1,0 +1,23 @@
+<div class="side-bar">
+  <!-- #myForm="ngForm" -->
+  <form class="form" [formGroup]="myForm" >
+    <mat-form-field class="parameter-input">
+      <mat-label>Height</mat-label>
+      <input matInput name="height" formControlName="height">
+    </mat-form-field>
+    <mat-form-field class="parameter-input">
+      <mat-label>Radius</mat-label>
+      <input matInput name="radius" formControlName="radius">
+    </mat-form-field>
+    <mat-form-field class="parameter-input">
+      <mat-label>Number of segments</mat-label>
+      <input matInput name="numSegments"  formControlName="numSegments">
+    </mat-form-field>
+    <!-- [disabled]="myForm.invalid" -->
+    <button
+      class="btn btn-default" (click)="submit()">
+      Добавить
+    </button>
+
+  </form>
+</div>
