@@ -59,11 +59,11 @@ function triangulate(height: number, radius: number, segments: number): ObjectDa
 }
 
 @Component({
-  selector: 'app-test-component',
-  templateUrl: './test-component.component.html',
-  styleUrls: ['./test-component.component.scss']
+  selector: 'app-scene-component',
+  templateUrl: './scene.component.html',
+  styleUrls: ['./scene.component.scss']
 })
-export class TestComponentComponent {
+export class SceneComponent {
   private renderer: THREE.Renderer;
   private scene: THREE.Scene;
   private cone: THREE.Mesh;
@@ -124,7 +124,7 @@ export class TestComponentComponent {
     let cameraPos = new THREE.Vector3(-50, 0, 10);
     this.camera.position.copy(cameraPos);
     this.camera.lookAt(0, 0, 0);
-    // fix camera rotation after lookAt 
+    // fix camera rotation after lookAt
     this.camera.rotation.z = -Math.PI / 2;
 
     let light = new THREE.DirectionalLight(THREE.Color.NAMES.lightyellow, 10);

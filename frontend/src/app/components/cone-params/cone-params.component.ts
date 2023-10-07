@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import { FormControl, FormGroup, NgForm, Validators} from '@angular/forms';
-import { ApiService } from '../api.service';
+import { ApiService } from '../../services/api.service';
 
 type Params = {
   height: number,
@@ -9,11 +9,11 @@ type Params = {
 }
 
 @Component({
-  selector: 'app-form-component',
-  templateUrl: './form-component.component.html',
-  styleUrls: ['./form-component.component.scss'],
+  selector: 'app-cone-params',
+  templateUrl: './cone-params.component.html',
+  styleUrls: ['./cone-params.component.scss'],
 })
-export class FormComponentComponent {
+export class ConeParamsComponent {
   myForm : FormGroup;
   apiService: ApiService;
 
