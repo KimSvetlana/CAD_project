@@ -1,0 +1,15 @@
+{
+    "name": "CAD_backend",
+    "version": "1.0.0",
+    "description": "A simple backend server to test out API requests",
+    "main": "server.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "Svetlana Kim",
+    "license": "ISC",
+    "dependencies": {
+      "body-parser": "^1.19.0",
+      "express": "^4.17.1"
+    }
+  }

@@ -11,6 +11,8 @@ import { FormsModule } from '@angular/forms';
 import { FormComponentComponent } from './form-component/form-component.component';
 import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule }   from '@angular/forms';
+import { ApiService } from './api.service';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -21,7 +23,8 @@ import { ReactiveFormsModule }   from '@angular/forms';
     MatFormFieldModule,
     FormsModule,
     MatInputModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   declarations: [
     FormComponentComponent,
@@ -30,7 +33,7 @@ import { ReactiveFormsModule }   from '@angular/forms';
   ],
   exports: [
   ],
-  providers: [],
+  providers: [ ApiService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
