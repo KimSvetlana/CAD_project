@@ -1,12 +1,12 @@
 import {Component} from '@angular/core';
-import {MatSelectModule} from '@angular/material/select';
-import {MatInputModule} from '@angular/material/input';
-import {MatFormFieldModule} from '@angular/material/form-field';
 import { FormControl, FormGroup, NgForm, Validators} from '@angular/forms';
 import { ApiService } from '../api.service';
 
-import { map } from 'rxjs/operators'
-
+type Params = {
+  height: number,
+  radius: number,
+  numSegments: number
+}
 
 @Component({
   selector: 'app-form-component',
@@ -30,7 +30,6 @@ export class FormComponentComponent {
 
   submit(){
     let params = this.myForm.value;
-    console.log("params", params);
-    this.apiService.getData().subscribe(el => console.log("apiService returned: ", el));
+    this.apiService.getData(params).subscribe(el => console.log("apiService returned: ", el));
   }
 }
