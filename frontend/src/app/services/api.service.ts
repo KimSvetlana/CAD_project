@@ -22,7 +22,6 @@ export class ApiService {
     const port = 4000;
     return this.http.get(`http://localhost:${port}/api/data`, {headers: new HttpHeaders("Content-Type: application/json"), params: params})
     .pipe(catchError((error) => {
-      console.log('catch err', error)
       this.formatErrors(error)
       return throwError(error)
     }
@@ -32,7 +31,7 @@ export class ApiService {
 
   private formatErrors(error: Error) {
     this.snackbar.open(`Что-то произошло. Error: ${error.message}`, "Закрыть" , {
-      duration: 2000,
+      duration: 5000,
     })
   }
 }
