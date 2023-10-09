@@ -16,8 +16,7 @@ export class ApiService {
   constructor(private http: HttpClient) { }
 
   public getData(params: ConeParams) {
-    console.log('get data with coneParams', params)
     const port = 4000;
-    return this.http.get(`http://localhost:${4000}/api/data`, {headers: new HttpHeaders("Content-Type: application/json"), params: params})
+    return this.http.get(`http://localhost:${port}/api/data`, {headers: new HttpHeaders("Content-Type: application/json"), params: params})
   }
 }
