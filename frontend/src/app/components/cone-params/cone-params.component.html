@@ -3,18 +3,32 @@
     <mat-form-field class="parameter-input">
       <mat-label>Height</mat-label>
       <input matInput name="height" formControlName="height">
+      <mat-error *ngIf="myForm.controls['height'].invalid">
+        Высота должна быть > 0
+        Дробное число должно быть записано через "."
+      </mat-error>
     </mat-form-field>
     <mat-form-field class="parameter-input">
       <mat-label>Radius</mat-label>
       <input matInput name="radius" formControlName="radius">
+      <mat-error *ngIf="myForm.controls['radius'].invalid">
+        Радиус должен быть > 0
+        Дробное число должно быть записано через "."
+      </mat-error>
     </mat-form-field>
     <mat-form-field class="parameter-input">
       <mat-label>Number of segments</mat-label>
       <input matInput name="numSegments"  formControlName="numSegments">
+      <mat-error *ngIf="myForm.controls['numSegments'].invalid">
+        Число сегментов должно быть > 0
+        Число сегментов всегда целое
+      </mat-error>
     </mat-form-field>
     <!-- [disabled]="myForm.invalid" -->
     <button  mat-flat-button color="primary"
-      class="btn btn-default" (click)="submit()">
+      class="btn btn-default" (click)="submit()"
+      [disabled]="myForm.invalid"
+    >
       Расчитать
     </button>
 

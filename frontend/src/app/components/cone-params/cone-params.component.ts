@@ -26,9 +26,9 @@ export class ConeParamsComponent {
 
     const floatExpr = "([0-9]*[.])?[0-9]+";
     this.myForm = new FormGroup({
-      "height": new FormControl(10,  [Validators.required,  Validators.pattern(floatExpr)]),
-      "radius": new FormControl(10,  [Validators.required,  Validators.pattern(floatExpr)]),
-      "numSegments": new FormControl(10, [Validators.required,  Validators.pattern("[0-9]+")])
+      "height": new FormControl(10,  [Validators.required, Validators.min(1) ,Validators.pattern(floatExpr)]),
+      "radius": new FormControl(10,  [Validators.required,  Validators.min(1), Validators.pattern(floatExpr)]),
+      "numSegments": new FormControl(10, [Validators.required,  Validators.min(1), Validators.pattern("[0-9]+")])
     });
   }
 
