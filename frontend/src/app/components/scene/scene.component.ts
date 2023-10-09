@@ -1,11 +1,15 @@
 import { Component } from '@angular/core';
-import { ObjDataService, IObjectData, IConeParams } from 'src/app/services/obj-data.service';
+import {
+  ObjDataService,
+  IObjectData,
+  IConeParams,
+} from 'src/app/services/obj-data.service';
 import * as THREE from 'three';
 
 @Component({
   selector: 'app-scene-component',
   templateUrl: './scene.component.html',
-  styleUrls: ['./scene.component.scss']
+  styleUrls: ['./scene.component.scss'],
 })
 export class SceneComponent {
   private renderer: THREE.Renderer;
@@ -16,18 +20,22 @@ export class SceneComponent {
   private material!: THREE.Material;
   objDataService: ObjDataService;
 
-  constructor( objDataService: ObjDataService) {
+  constructor(objDataService: ObjDataService) {
     this.objDataService = objDataService;
 
     this.renderer = new THREE.WebGLRenderer();
     let whiteColor = new THREE.Color(THREE.Color.NAMES.ghostwhite);
     this.scene = new THREE.Scene();
     this.scene.background = whiteColor;
-    this.camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 2000);
+    this.camera = new THREE.PerspectiveCamera(
+      60,
+      window.innerWidth / window.innerHeight,
+      0.1,
+      2000
+    );
 
     this.renderer.setSize(window.innerWidth, window.innerHeight);
     document.body.appendChild(this.renderer.domElement);
-
 
     let light = new THREE.DirectionalLight(THREE.Color.NAMES.lightyellow, 10);
     light.position.x = -5;
@@ -35,8 +43,10 @@ export class SceneComponent {
     light.position.z = 10;
     this.scene.add(light);
     this.animate();
-    this.objDataService.$objData.subscribe(data => this.onObjectData(data));
-    this.objDataService.$objParams.subscribe(params => this.repositionCamera(params));
+    this.objDataService.$objData.subscribe((data) => this.onObjectData(data));
+    this.objDataService.$objParams.subscribe((params) =>
+      this.repositionCamera(params)
+    );
   }
 
   repositionCamera(params: IConeParams) {
@@ -57,9 +67,9 @@ export class SceneComponent {
       this.cone.rotation.z += 0.002;
     }
     this.renderer.render(this.scene, this.camera);
-  };
+  }
 
-  onObjectData(objData: IObjectData){
+  onObjectData(objData: IObjectData) {
     if (this.cone) {
       this.scene.remove(this.cone);
       this.geometry.dispose();
@@ -90,8 +100,14 @@ export class SceneComponent {
 
     this.geometry = new THREE.BufferGeometry();
 
-    this.geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
-    this.geometry.setAttribute('normal', new THREE.Float32BufferAttribute(normals, 3));
+    this.geometry.setAttribute(
+      'position',
+      new THREE.Float32BufferAttribute(vertices, 3)
+    );
+    this.geometry.setAttribute(
+      'normal',
+      new THREE.Float32BufferAttribute(normals, 3)
+    );
 
     let coneColor = new THREE.Color(THREE.Color.NAMES.lightgrey);
     this.material = new THREE.MeshPhongMaterial({
